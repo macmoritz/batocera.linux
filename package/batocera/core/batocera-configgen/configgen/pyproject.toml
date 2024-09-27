@@ -20,3 +20,9 @@ path = "configgen/__version__.py"
 include = [
     "/configgen",
 ]
+
+[tool.pyright]
+extends = "../../../../../pyproject.toml"
+
+[tool.ruff]
+extend = "../../../../../pyproject.toml"
