@@ -27,6 +27,8 @@ define RPIGPIOSWITCH_INSTALL_TARGET_CMDS
 	    $(TARGET_DIR)/usr/bin/rpi-argonone
 	$(INSTALL) -D -m 0755 $(RPIGPIOSWITCH_SRC)/rpi-kintaro-SafeShutdown.py \
 	    $(TARGET_DIR)/usr/bin/rpi-kintaro-SafeShutdown
+	$(INSTALL) -D -m 0755 $(RPIGPIOSWITCH_SRC)/rpi-iconicarcade.py \
+	    $(TARGET_DIR)/usr/bin/rpi-iconicarcade
 	$(INSTALL) -D -m 0755 $(RPIGPIOSWITCH_SRC)/S72gpioinput \
 	    $(TARGET_DIR)/etc/init.d/S72gpioinput
 endef
