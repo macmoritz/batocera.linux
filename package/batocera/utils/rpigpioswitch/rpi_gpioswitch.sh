@@ -53,6 +53,7 @@ powerdevices=(
               PIRONMAN "Fan, OLED, RGB case support for the Pironman case with RPi4 devices" \
               PIRONMAN5 "Fan, OLED, RGB case support for the Pironman 5 case with RPi5 devices" \
               DOCKERPI_POWERBOARD "Dockerpi Powerboard Hat support for compatible Raspberry Pi boards"
+	      ICONICARCADE "Boot button support for Iconic Arcade"
              )
 
 #dialog for selecting your switch or power device
@@ -828,6 +829,25 @@ function powerboard_config()
     powerboard_start $@
 }
 
+function iconicarcade_start()
+{
+    /usr/bin/rpi-iconicarcade start &
+    wait $!
+}
+
+function iconicarcade_stop()
+{
+    pid=$(pgrep -f rpi-iconicarcade | head -n 1)
+    if ! [ -z "${pid}" ]; then
+         kill -9 "${pid}"
+    fi
+}
+
+function iconicarcade_config()
+{
+    true
+}
+
 #-----------------------------------------
 #------------------ MAIN -----------------
 #-----------------------------------------
@@ -908,6 +928,9 @@ case "$CONFVALUE" in
     ;;
     "DOCKERPI_POWERBOARD")
         powerboard_$1
+    ;;
+    "ICONICARCADE")
+        iconicarcade_$1
     ;;
     "--DIALOG")
         # Go to selection dialog
