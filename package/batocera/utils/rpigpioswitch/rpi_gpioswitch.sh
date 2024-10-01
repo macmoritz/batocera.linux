@@ -831,8 +831,7 @@ function powerboard_config()
 
 function iconicarcade_start()
 {
-    /usr/bin/rpi-iconicarcade start &
-    wait $!
+    rpi-iconicarcade start &
 }
 
 function iconicarcade_stop()
