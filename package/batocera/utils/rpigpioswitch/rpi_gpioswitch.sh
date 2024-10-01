@@ -977,8 +977,7 @@ function wm8960audiohat_config()
 
 function iconicarcade_start()
 {
-    /usr/bin/rpi-iconicarcade start &
-    wait $!
+    rpi-iconicarcade start &
 }
 
 function iconicarcade_stop()
