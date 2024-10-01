@@ -33,11 +33,11 @@ def shutdown_check():
             if event.event_type is event.Type.FALLING_EDGE:
                 last_falling = datetime.now()
             if event.event_type is event.Type.RISING_EDGE:
-                if last_falling.timestamp() == 0: 
-                    continue
-
                 delta = datetime.now() - last_falling
                 last_falling = datetime.fromtimestamp(0)
+                if last_falling.timestamp() == 0 or delta < timedelta(microseconds=100):
+                    continue
+
                 if delta > timedelta(seconds=3):
                     logger.info("Longpress detected")
                     os.system("/usr/bin/batocera-es-swissknife --shutdown")
